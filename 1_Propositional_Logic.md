@@ -94,6 +94,83 @@
 
 ## Proof Systems
 
+### Theorems
+
+- 항상 참인 formula를 의미(valid formula)
+
+- 증명 : 모든 proposition variable에 대한 truth table을 만들어 주어진 formula가 항상 참인 것을 보여주면 된다.
+
+- ex) `￢A ∨ B ⇔ A ⇒ B`(De Morgan's Law)
+
+  ![theorem proof](.\image\01_theorem.JPG)
+
+
+
+### Entailment
+
+- 이미 주어진 formula(또는 Knowledge) A가 참이 되는 모든 Interpretation(world)에서 어떤 또 다른 formula B가 참이 될 때, A로부터 B가 유도된다고 하며 이를 '**Entailment**'라고 한다.
+
+- KB(Knowledge Base)가 `A ∧ B`일 때, *KB entails A*라고 하며 **KB ╞ a**라고 표기한다.
+
+  - KB는 formula들의 집합이라고 할 수 있다.
+
+- ex) KB = {A, ￢A ∨ B}일 때, **KB ╞ B** *(KB entails B)*이다.
+
+  이는 KB 내의 모든 formula, A와 ￢A ∨ B 모두 참일 때, B가 반드시 참이 된다는 의미
+
+
+
+### Deduction Theorem
+
+> *A ╞ B if and only if ╞ A ⇒ B*
+
+- **'*╞ A ⇒ B*' 의 의미**
+
+  ╞ 의 왼측에 아무 것도 없는 것은 KB가 공집합 ∮ (empty set)임을 의미한다. 
+
+  이는 KB가 없어도(지식이 없어도) 'A ⇒ B'가 항상 참이라는 의미다.(valid formula / tautology)
+
+  *(증명은 후에 정리)*
+
+### proof by contradiction / 귀류법
+
+> *KB ╞ Q if and only if KB ∧ ￢Q is unsatisfiable*
+
+- ex) KB = {A, ￢A ∨ B}일 때, 위의 식을 증명하라.
+
+  i. KB ∪ {￢B} = {A, ￢A ∨ B, ￢B}
+
+  ii. KB가 항상 참이면, 그 안에 있는 formula가 모두 참이어야 한다.
+
+  iii. A와 ￢A ∨ B가 참이면, B는 항상 참이다.
+
+  iv. ￢B도 참이다.
+
+  v. (iii)과 (iv)에 의해 contradiction이 생긴다.
+
+  vi. 따라서 `KB ∧ ￢Q`는 unsatisfiable하다.
+
+
+
+### Derivation
+
+- **KB┣ A**
+  - *'Formula A가 KB로부터 derive 되었다.'*
+  - KB 내에 있는 formula로부터 궁극적으로 증명하려는 formula가 나오도록 유도하는 과정을 통해 Entailment를 증명하는 것을 의미
+  - 추론 규칙 적용
+- **KB┣ p A**
+  - 프로그램 p가 formula A를 KB로부터 derive했다. 
+
+
+
+### [Denotation Semantics](https://ko.wikipedia.org/wiki/표시적_의미론)
+
+- 설명은 위의 단어 클릭
+
+![denotation semantic](.\image\01_denotation_semantics.JPG)
+
+
+
 ## Resolution
 
 ## Horn Clauses
