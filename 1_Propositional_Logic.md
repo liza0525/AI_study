@@ -70,7 +70,7 @@
 
 ### Truth Table
 
-![truth table](.\image\01_truth_table.JPG)
+![truth table](./image/01_truth_table.JPG)
 
 - empty formula는 모든 interpretations에 대해 true
 - `A ≡ B`는 `A ⇔ B`를 설명하기 위한 **Meta Language**라고 할 수 있다.
@@ -102,7 +102,7 @@
 
 - ex) `￢A ∨ B ⇔ A ⇒ B`(De Morgan's Law)
 
-  ![theorem proof](.\image\01_theorem.JPG)
+  ![theorem proof](./image/01_theorem.JPG)
 
 
 
@@ -167,7 +167,7 @@
 
 - 설명은 위의 단어 클릭
 
-![denotation semantic](.\image\01_denotation_semantics.JPG)
+![denotation semantic](./image/01_denotation_semantics.JPG)
 
 
 
