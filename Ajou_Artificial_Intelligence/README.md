@@ -14,6 +14,7 @@
 
 0. 
 1. [Propositional Logic](./1_Propositional_Logic.md/)
+2. [Predicate Logic](./2_Predicate_Logic.md)
 
 
 
