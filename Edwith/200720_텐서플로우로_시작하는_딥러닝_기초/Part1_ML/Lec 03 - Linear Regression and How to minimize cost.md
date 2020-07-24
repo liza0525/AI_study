@@ -2,6 +2,8 @@
 
 > 선형 회귀(Linear Regression)의 비용을 최소화 하는 방법 강의
 
+[TOC]
+
 ### 간략화된 수식(Simplified Hypothesis)
 
 - b(bias)을 생략한다.
