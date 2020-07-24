@@ -110,3 +110,40 @@ H(x) = Wx
 - 이는 Local Minimum이 1개만 존재
 
   → 이 경우에는 Gradient Descent를 사용 가능
+
+---
+
+## 실습
+
+### numpy 문법
+
+>  동종의 다차원 배열을 나타낼 때 쓰는 파이썬 기본 라이브러리
+
+#### numpy.linspace(*start*, *stop*, *num=50*)
+
+- start 값부터 stop 값까지 num(50) 구간으로 나눈다.
+- return의 자료형 : ndarray
+- 이외의 지정 매개변수는 [https://numpy.org/doc/stable/reference/generated/numpy.linspace.html](https://numpy.org/doc/stable/reference/generated/numpy.linspace.html) 참고
+
+
+
+### Tensorflow 문법
+
+#### tensorflow.multipy(A, B)
+
+- A와 B를 곱한다.
+
+#### A.assign(B)
+
+- B를 A에 assign한다. (A가 B값으로 update)
+
+#### tensorflow.random.set_seed(x)
+
+- 인수 x 값에 의해 정해진 랜덤값을 유지
+- 이후 초기화 또는 타 PC 이용 시에도 유지가 되게 하기 위함
+- tensorflow 1.x 버전 : `tensorflow.set_random_seed(x)`
+
+#### tensorflow.random.normal()
+
+- 랜덤값 설정
+- tensorflow 1.x 버전 : `tensorflow.random_normal(x)`
