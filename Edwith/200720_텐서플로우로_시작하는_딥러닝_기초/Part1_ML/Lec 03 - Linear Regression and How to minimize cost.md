@@ -12,7 +12,7 @@ H(x) = Wx
 
 #### Cost
 
-![1-2_fomula_for_minimize_cost](../MDImage/1-2_fomula_for_minimize_cost.png)
+![1-2_fomula_for_minimize_cost](../MDImage/1-2_fomula_for_minimize_cost.PNG)
 
 
 
@@ -43,6 +43,7 @@ H(x) = Wx
   ![](../MDImage/1-3_cost_function_graph.PNG)
 
 - 위의 예제 Data와 Cost 함수를 보면 W=1일 때, cost가 최소임
+  
   - 즉, cost = error 가 가장 적은 W는 1이라는 결론을 낼 수 있음
 - 이를 컴퓨터가 찾는 방법은 무엇일까!?
 
