@@ -73,3 +73,48 @@
 - (X의 column 갯수) == (W의 row 갯수)여야 행렬곱 가능
 - 행렬곱의 장점 : 데이터(또는 instance)의 갯수와 무관하게 연산 가능
 - 출력 갯수가 여러 개일 수도 있다.
+
+---
+
+## 실습
+
+### numpy 문법
+
+#### numpy.array(*object*, dtype=*None*)
+
+- 넘파이 배열 생성
+
+- dtype은 array 안 value의 data-type을 설정한다.
+
+  (ex) dtype=np.float32
+
+#### slicing
+
+```python
+data = np.array([
+    [1., 2., 3.],
+    [4., 5., 6.],
+    [7., 8., 9.],
+])
+
+# 콤마를 기준으로
+# 앞부분은 row, 뒷부분은 column을 의미
+A = data[:, :-1]
+B = data[:, [-1]]
+'''
+============== result ===============
+A = [
+[1., 2., 3.],
+[4., 5., 6.]]
+B = [
+[7., 8., 9.]]
+'''
+```
+
+
+
+### Tensorflow 문법
+
+#### tensorflow.matmul(A, B)
+
+- 행렬 A와 행렬 B를 행렬곱
