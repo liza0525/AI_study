@@ -120,3 +120,8 @@ optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.01)
 optimizer.apply_gradients(grads_and_vars=zip(grads, [W,b]))
 ```
 
+---
+
+# 실습
+
+- matplotlib : 그래프 표시를 가능하게 하는 파이썬 라이브러리
