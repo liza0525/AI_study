@@ -85,3 +85,38 @@ hypothesis = tf.div(1., 1. + tf.exp(z)) # sigmoid
 predicted = tf.cast(hypothesis > -0.5, dtype=tf.int32)
 ```
 
+----
+
+# Lec 05-2 - Logistic Regression/Classification 의 cost 함수, 최소화
+
+> 로지스틱 회귀/분류(Logistic Regression/Classification)의 비용함수를 최소화 하는 방법을 알아본다.
+
+## Cost Function
+
+![1-5-2_logistic_cost_function](../MDImage/1-5-2_logistic_cost_function.PNG)
+
+- 처음에 만든 모델과, 궁극적으로 찾아야할 모델의 차이가 생길 수 있음 => 이 때의 이 차이를 **Cost**라고 함
+- cost function은 모델과 비슷할 수록 0에 가까워지고, 다를수록 ∞에 가까워지기 때문에 log 함수를 쓰게 된다.
+
+![1-5-2_logistic_cost_function_log](../MDImage/1-5-2_logistic_cost_function_log.PNG)
+
+```python
+def loss_fn(hypothesis, labels): # hypothesis : 가설, lables : 정답
+    cost = tf.reduce_mean(labels * tf.log(hypothesis) + (1 - labels) * tf.log(1 - hypothesis))
+    return cost
+```
+
+## Optimization
+
+- cost function의 값을 minimization하는 방법
+- 각 cost function 값의 경사값(미분값)을 최소(0)이 되는 곳을 찾는다.
+
+```python
+def grad(hypothesis, labels):
+    with tf.GradientTape() as tape:
+        loss_value = loss_fn(hypothesis, labels) # loss_fn 코드는 위의 예제 참고
+    return tape.gradient(loss_value, [W, b])
+optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.01)
+optimizer.apply_gradients(grads_and_vars=zip(grads, [W,b]))
+```
+
