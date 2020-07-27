@@ -1,8 +1,10 @@
+[TOC]
+
 # Lec 05-1 - Logistic Regression/Classification 의 소개
 
 > 로지스틱 회귀/분류(Logistic Regression/Classification)의 개념을 알아본다
 
-[TOC]
+
 
 ## Logistic Regression이란?
 
@@ -54,13 +56,13 @@
 
 ## Hypothesis Representation
 
-![1-5-1_hytothesis representation_1](../MDImage/1-5-1_hytothesis representation_1.PNG)
+![1-5-1_hytothesis_representation_1](../MDImage/1-5-1_hytothesis_representation_1.PNG)
 
 - h_Θ(x) =(Θ^T*X)의 Linear Regression의 식으로 나타낼 수도 있긴 함
   - 하지만 Linear Regression처럼 연속되는 Data의 함수를 찾는 것이 아님
   - Data를 '**분류**'하는 기준을 찾는 것이 Classification의 목표
 
-![1-5-1_hytothesis representation_2](../MDImage/1-5-1_hytothesis representation_2.PNG)
+![1-5-1_hytothesis_representation_2](../MDImage/1-5-1_hytothesis_representation_2.PNG)
 
 - function g를 통해 그래프를 꺾음
 - [Decision Boundary](#Decision Boundary)
