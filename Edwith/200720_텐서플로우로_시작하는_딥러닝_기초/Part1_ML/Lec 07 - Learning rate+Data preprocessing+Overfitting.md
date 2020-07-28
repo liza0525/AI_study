@@ -97,3 +97,68 @@ optimizer.apply_gradients(grads_and_vars=zip(grads, [W, b]))
 - 유치원생의 공던지기 놀이 결과 데이터에 일부 데이터가 너무 높은 값이 있을 때***(수치형 데이터)***
 - 자연어 처리할 때 필요 없는 조동사, 조사, 특수문자 등을 제거해야 할 때***(자연어 데이터)***
 - 얼굴 인식 모델에 필요한 얼굴 이미지에서 배경과 그 외 부수적인 부분을 제거해야 할 때***(이미지 데이터)***
+
+---
+
+# Lab 07-2-1 -  Application & Tips: 오버피팅(Overfitting) & Solutions
+
+> 오버피팅(Overfitting)과 그 해결책에 대해 알아본다.
+
+## Overfitting
+
+- *'과하게 맞춰져 있다.'*
+- 학습 데이터에만 맞게 모델이 잘 만들어져 테스트 데이터를 입력했을 시 정확도가 오히려 떨어지는 현상
+
+### 해결법
+
+#### Set a features
+
+- Get more training Data
+
+  - 아주 많은 양의 데이터를 넣는다.
+
+- Smaller set of features
+
+  - 차원 축소(PCA)
+
+    ```python
+    # Sklearn Code
+    from sklearn.decomposition import PCA
+    pca = decomposition.PCA(n_components=3) # PCA를 3차원으로 설정
+    pca.fit(X)
+    X = pca.transform(X)
+    ```
+
+    
+
+- Add additional features
+
+  - 차원 증가
+  - 실제 모델이 단순할 경우 의미가 없을 수 있다. -> 모델 구체화 필요
+  - Fixes high bias
+  - 위의 방법들과는 반대되는 경우에 이용(underfitting)
+
+![1-7-2_appropriate_number_of_featuers](../MDImage/1-7-2_appropriate_number_of_featuers.PNG)
+
+- 궁극적으로 Feature의 적당한 갯수를 찾으면 Overfitting이 해결된다.(빨간 화살표)
+
+#### Regularization(Add term to loss)
+
+- 학습과정에 loss에 특정 값을 추가하여 Overfitting 해결
+- (ex) Linear regression - Cost Function에 모델 파라미터 값과 람다 값을 더해줌으로서 해결(수식은 pdf 참고)
+- 특정 Weight가 너무 크게 나오는 경우에 사용
+
+```python
+# Tensorflow Code
+L2_loss = tf.nn.l2_loss(w) # output = sum(t**2) / 2
+```
+
+#### 그 외
+
+- Data Augmentation
+  - (Image Data)
+    - Color Jilttering
+    - Horizontal Flips
+    - Random Crops/Scales
+- Dropout(0.5 is common)
+- Batch Normalization
