@@ -244,3 +244,11 @@ saver.restore(tf.train.latest_checkpoint('./'))
 tf.nn.depthwise_conv2d(input, filter, strides, padding)
 ```
 
+---
+
+# 실습
+
+- Fashion MNIST
+- IMDB
+- CIFAR-100(강의에서는 소개만)
+
