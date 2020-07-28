@@ -100,7 +100,7 @@ optimizer.apply_gradients(grads_and_vars=zip(grads, [W, b]))
 
 ---
 
-# Lab 07-2-1 -  Application & Tips: 오버피팅(Overfitting) & Solutions
+# Lec 07-2-1 -  Application & Tips: 오버피팅(Overfitting) & Solutions
 
 > 오버피팅(Overfitting)과 그 해결책에 대해 알아본다.
 
@@ -162,3 +162,85 @@ L2_loss = tf.nn.l2_loss(w) # output = sum(t**2) / 2
     - Random Crops/Scales
 - Dropout(0.5 is common)
 - Batch Normalization
+
+---
+
+# Lec 07-3-1 - Application & Tips: Data & Learning
+
+> 데이터 세트와 학습에 관련한 기법들을 알아본다.
+
+## Data
+
+### Training / Validation / Testing Data
+
+- 학습 / 평가 / 테스트 데이터
+- 학습 데이터와 평가 데이터를 구성할 때, 최대한 학습 데이터도 평가 데이터도 다양한 종류의 데이터로 나눠야 한다.
+  - 만약 편향적인 데이터로 구성한 학습 데이터로 모델을 training 시키면, 남은 평가 데이터를 다 못 맞추는 결과 초래
+
+```python
+# tensorflow MNIST
+mnist = tf.keran.datasets.mnist
+# 60,000 trainig / 10,000 testing images
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+# 20% validation data
+model.fit(x_train, y_train, validation_split=0.2, epochs=5)
+```
+
+### Evaluating a hypothesis
+
+- Layer 구성, Learning Rate 설정, Optimizer 구성 등으로 모델 구성
+  - 새로운 데이터로 이를 평가
+
+```python
+test_acc = accracy_fn(softmax_fn(x_test), y_test) # define hypothesis and test
+model.evaluate(x_test, y_test) # Keras
+```
+
+### Anomaly Detection(이상탐지)
+
+- 보통은 학습 데이터와 평가 데이터를 가지고 모델을 만듦
+- 이상감지 모델은 새로운 방법으로 만드는 경우가 있음
+
+#### GANs
+
+- 건강한 데이터를 가지고 모델을 만들면, 건강한 데이터에 대해서만 잘 찾기 마련
+- GAN이라는 네트워크를 이용하여 새로운, 특이한 데이터가 들어오면 Anomalies를 검색할 수 있게 됨
+
+## Learning
+
+### Online vs. Batch(Offline) Learning
+
+|             | Online Learning  | Batch(Offline) Learning |
+| ----------- | ---------------- | ----------------------- |
+| Data        | Fresh            | Static                  |
+| Network     | connected        | disconnected            |
+| Model       | Updating         | Static                  |
+| Weight      | Tunning          | Initialize              |
+| Infra(GPU)  | Always           | Per call                |
+| Application | Realtime Process | Stopping                |
+| Priority    | Speed            | Correctness             |
+
+### Fine Tuning/ Feature Extraction
+
+- 예를 들어 얼굴 구분 모델은 인종에 따라 구분을 못할 수도 있음
+- 보완하기 위한 기법
+  - **fine-tune** : 기존 모델의 weight값을 미세하게 조절하며 학습을 시킴
+  - **Feature Extraction** : 기존 모델은 그대로 둔 후 새로운 task에 대해서만 학습을 시킴
+
+```python
+saver = tf.train.import_meat_graph('my-model-1000.meta')
+saver.restore(tf.train.latest_checkpoint('./'))
+```
+
+### Efficient Models
+
+- Fine-tunning/Feature extraction 등을 통해 모델을 만들었다 하더라도, 효과적인 모델인지 생각해야 함
+  - 속도 / 퍼포먼스도 중요! (Less inference time is needed)
+    - weight의 경량화가 필요
+    - fully connected layers => 1 x 1 convolutions로 대체 하는 등의 기법
+    - Squeezenet, Mobilenet 등의 논문도 있음(low demension)
+
+```python
+tf.nn.depthwise_conv2d(input, filter, strides, padding)
+```
+
