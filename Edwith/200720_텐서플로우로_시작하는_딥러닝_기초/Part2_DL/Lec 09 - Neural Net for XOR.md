@@ -63,3 +63,7 @@ def neural_net(features):
   - AE
 
   등을 만들어 낼 수 있다.
+
+## 실습
+
+- [lec9-1_nn_for_xor](./practice/lec9-1_nn_for_xor.ipynb)
