@@ -69,3 +69,23 @@
 ### A Big Problem : Neural Network의 위기와 침체(1990 중반)
 - Backpropagation의 한계 : Layer가 많아질수록 Error가 점점 전달이 되지 않아 의미가 희미해짐
 - 다른 DL 알고리즘의 등장 : SVM, RandomForest 등
+
+---
+
+# Lec 08-2 - 딥러닝의 기본 개념 2: Back-propagation과 2006/2007 '딥'의 출현
+> 딥러닝의 발전 역사를 이어 알아본다.
+## CIFAR
+- Canadian Institute for Advanced Research
+- 딥러닝에 대한 관심을 극대화 시킨 캐나다의 연구 단체
+### Breakthrough in 2006 and 2007(by Hinton & Bengio)
+- 2006 논문 : 초기값만 잘 준다면 NN를 잘 학습할 수 있다.
+- 2007 논문 : 신경망을 보다 깊게 구축하면 다양한 문제 해결 가능
+## ImageNet
+- 이미지를 인식하는 모델망 구축 챌린지
+- 오답률이 30% 가까이었으나 2012년 AlexNet을 통해 약 15%까지 급격히 떨어짐
+- 2015년에 3%까지 떨어졌고, 이는 인간의 오답률보다도 낮아짐
+
+## 딥러닝의 계속적인 발전
+- 노이즈 환경 음성 인식
+- 알파고
+- 게임 플레이 자동화 등
