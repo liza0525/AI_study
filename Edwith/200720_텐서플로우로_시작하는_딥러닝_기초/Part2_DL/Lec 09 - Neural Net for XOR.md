@@ -27,9 +27,57 @@
 - 따라서 X1 = 0, X2 = 0일 때, XOR 연산한 Y_hat은 0이 되므로, 예상한 값과 같다.
 - 모든 X1, X2 쌍에 대해서 모두 계산해보면 XOR 연산에 대한 NN을 만들 수 있다는 것을 증명할 수 있다.
 
+### Weight and Bias
 
+- 그럼 위의 예시 외의 Weight와 Bias로도 XOR NN를 만들 수 있는가? -> 이것은 숙제!
+- 위의 예시에서는 3개의 unit으로 된 NN를 구성했지만, 이를 2개의 unit으로 새로 구성할 수 있다. 아래에 적은 [Vertor](#Vector) 참고
 
 ----
+
+
+
+# Lec 09-2 - 딥네트워크 학습 시키기 (backpropagation)
+
+> XOR 문제 해결을 위한 딥러닝 모델을 학습시킨다.
+
+## XOR 딥러닝 모델 만들기
+
+### Gradient Desenct Algorithm 이용
+
+- 미분값이 0이 되는 곳을 찾아가는 기법
+
+### Derivation
+
+- X1, X2, X3, ... 등이 Y_hat에 미칠 영향(편미분값)를 알아야 한다.
+  - 각 레이어마다 알아야 함
+  - 하지만 이건 매우 어려운 일..
+  - Backpropagation의 등장
+
+### Backpropagation(Chain Rule)
+
+- 예측값과 실측값의 차이(오류, error/cost)를 뒤에서부터 앞으로 전달하며 미분값과 weight 값 등을 조절하는 기법
+
+#### 간단한 예시
+
+![2-9-2_backpropagation](../MDImage/2-9-2_backpropagation.PNG)
+
+- f = wx +b, g = wx의 그래프를 위와 같이 표기
+- forward propagation의 값이 위와 같다고 가정
+- 각 편미분 값이 y_hat에 주는 영향을 의미
+  - f에 대한 w 편미분 = 5 (chain rule에 의해)
+    - w가 1 변할 때 y_hat은 5 변한다는 것을 의미
+  - f에 대한 x 편미분 = -2
+    - x가 1 변할 때 y_hat은 -2 변한다는 것을 의미
+  - f에 대한 b 편미분 = 1
+    - b가 1 변할 때 y_hat은 1 변한다는 것을 의미
+- 보다 복잡한 연산도 chain rule을 이용해 편미분값을 거꾸로 구해가며 각 property가 결과에 미치는 영향을 구할 수 있다.
+- 흐음... 미분 공부해야겠다...ㅠㅠ
+
+#### Backpropagation in Tersorflow
+
+- TensorBoard에 값들이 남아 있음 -> 이를 Tensorflow가 미분하며 backpropagation을 하기 때문에 우리가 직접 구현할 것이 없음
+
+---
 
 # Lab 09-1 - Neural Net for XOR
 
