@@ -1,5 +1,38 @@
 [TOC]
-# Lec 09-1 - Neural Net for XOR
+
+
+# Lec 09 - 1 - XOR 문제 딥러닝으로 풀기
+
+> 딥러닝으로 XOR 문제를 풀어본다
+
+## XOR Model
+
+- 하나의 Logistic Regression으로는 XOR를 풀 수 없음이 증명되었음
+- 따라서 다수의 Logistic Regression로 Neural Network를 구성하면 될 것이라 생각함
+  - 하지만 이런 경우 W, b는 어떻게 학습 시키는가?
+
+### XOR using NN
+
+![2-9-1_XOR_using_nn](../MDImage/2-9-1_XOR_using_nn.PNG)
+
+#### 증명
+
+- 각 Logistic Regression의 weight와 bias가 위와 같다고 가정
+- 첫 번째 Logistic Regression의 Y1 값은 0이 된다
+  - 0 * 5 + 0 * 5 - 8 = -8 --->[Sigmoid] ---> 0
+- 두 번째 Logistic Regression의 Y2 값은 1이 된다
+  - 0 * (-7) + 0 * (-7) + 3 = -3 --->[Sigmoid] ---> 1
+- 세 번째 Logistic Regression의 Y_hat 값은 1이 된다
+  - 0 * (-11) + 1 * (-11) - 5 = 6 --->[Sigmoid] ---> 0
+- 따라서 X1 = 0, X2 = 0일 때, XOR 연산한 Y_hat은 0이 되므로, 예상한 값과 같다.
+- 모든 X1, X2 쌍에 대해서 모두 계산해보면 XOR 연산에 대한 NN을 만들 수 있다는 것을 증명할 수 있다.
+
+
+
+----
+
+# Lab 09-1 - Neural Net for XOR
+
 > 신경망 네트워크를 코드로 구현하여 XOR 문제를 해결한다.
 ## Logistic Regression
 - [Recap](./Lec 05 - Logistic Regression_Classification.md)
