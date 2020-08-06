@@ -93,5 +93,24 @@
 
 - 어떤 모델을 학습 시킬 때, 몇 개의 뉴런(노드)을 제외하고 학습하는 방법을 의미
   - 끄는 노드는 Randomly 정해진다.
-- (ex) 고양이 분류 모델이 있다고 가정할 때, Dropout을 하지 않으면 고양이의 모든 부분을 가지고 학습을 하지만, Dropout을 하면 고양이의 일부분(귀, 눈, 발, 꼬리 등)만 가지고도 학습을 할 수 있다.
+- (ex) 고양이 판단 모델이 있다고 가정할 때, Dropout을 하지 않으면 고양이의 모든 부분을 가지고 학습을 하지만, Dropout을 하면 고양이의 일부분(귀, 눈, 발, 꼬리 등)만 가지고도 학습을 할 수 있다.
   - 갈색 고양이로 학습 시켜도, 검은 고양이, 회색 고양이로 테스트 해도 분류를 해낼 수 있게 된다.
+
+---
+
+# Lab 10-4: Batch Normalization
+
+> Batch Normalization에 대해 알아본다.
+
+## Batch Normalization
+
+- 모델의 Layer가 증가하면 증가할수록, Data에 대한 분산 그래프 모양이 점점 일그러진다.(**Internal Covariate Shift**)
+
+- Internal Covariate Shift을 막기 위해 **Batch Normalization 이용**
+
+- 이전 Layer에서 들어오는 Input의 Distribution(분산)을 계속 Normalization(정규화)한다.
+
+  - 항상 일정한 분산을 가지도록 하는 것
+
+    ![2-10_Batch_Norm_formula](../MDImage/2-10_Batch_Norm_formula.PNG)
+    - 위의 수식(정규화)을 통해 얻은 x_hat을 다음 레이어의 Input으로 넣겠다는 것
