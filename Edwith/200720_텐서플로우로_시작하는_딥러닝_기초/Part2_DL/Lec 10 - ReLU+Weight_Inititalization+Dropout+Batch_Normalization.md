@@ -67,3 +67,31 @@
 - ReLU 함수에 특화되어 있는 weight initialization 기법
 - 평균은 0, 분산은 Xavier의 2배(4/(Channel_in + Channel_out))인 경우다.
 
+---
+
+# Lab 10-3 - Dropout
+
+> Dropout에 대해 알아본다.
+
+## Why do we use Dropout?
+
+- Training Data sample으로 학습한 Network의 종류가 있을 때, 다음과 같이 분류가 가능하다.
+
+  - Under-fitting : Training Data sample를 너무 못 맞추는 경우
+  - Good : Training Data sample를 적절히 맞추는 경우
+  - Over-fitting : Training Data sample를 너무 잘 맞추는 경우
+
+  Under-fitting 경우는 train 데이터도 잘 못 맞추기 때문에 test 데이터도 못 맞추기 마련이지만,
+
+  Over-fiiting 경우는 train 데이터는 아주 잘 맞추면서도 test 데이터를 맞추는 정확도가 떨어진다.
+
+  - **Why?** Train 데이터 샘플만 잘 맞추기 때문에, 모델이 알지 못하는 전혀 다른, 새로운 데이터에 대한 정확도가 보장이 되지 않기 때문
+
+- 우리는 Over-fitting과 Under-fitting을 피하는 방법으로 **Dropout**(Regularization 중 하나)이라는 기법을 사용할 수 있다.
+
+## What is Dropout?
+
+- 어떤 모델을 학습 시킬 때, 몇 개의 뉴런(노드)을 제외하고 학습하는 방법을 의미
+  - 끄는 노드는 Randomly 정해진다.
+- (ex) 고양이 분류 모델이 있다고 가정할 때, Dropout을 하지 않으면 고양이의 모든 부분을 가지고 학습을 하지만, Dropout을 하면 고양이의 일부분(귀, 눈, 발, 꼬리 등)만 가지고도 학습을 할 수 있다.
+  - 갈색 고양이로 학습 시켜도, 검은 고양이, 회색 고양이로 테스트 해도 분류를 해낼 수 있게 된다.
