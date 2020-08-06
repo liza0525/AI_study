@@ -39,3 +39,31 @@
     - x가 음수일 때, 어떤 α 값을 x에 곱한 값으로 되어 있다.(보통 α는 0.1이나 0.01)
     - x가 양수일 때는 ReLU와 같음
 
+---
+
+# Lab 10-2 - Weight 초기화 잘해보자
+
+> 가중치 초기화(Weight Initialization)에 대해 알아본다
+
+## Weight Initialization 종류
+
+- Xavier(자비어) Initialization (= Glorot Initialization)
+- He Initialization
+
+### Xavier Initialization
+
+- Network의 목표는 어느 한 지점으로부터 (Global) Loss Minimum을 찾아내기 위한 학습을 하는 것
+  - 그러나 Loss Minimum이 다수인 경우(Local Loss Minimum이 존재하는 경우) 어느 지점에서 시작하냐에 따라 Global Loss Minimum에 도달하지 못할 수 있다.
+  - Saddle Point(안장점)에 도달하는 경우도 있다.
+    - Saddle Point : 어느 방향에서 보면 극대값이지만, 다른 방향에서 보면 극소값이 되는 점
+- Global Loss Minimum을 찾기 위해 좋은 출발점을 찾아야 하는데, Xavier는 그것을 찾아준다.
+- 지금까지 했던 예제에서는 weight 정할 때, random normal(평균 0, 분산 1인 random 함수)를 이용하여 initailization을 했다.
+  - **Xavier**의 경우, 평균은 0, 분산은 2/(Channel_in + Channel_out)인 random 분포로 weight를 설정
+    - **Channel_in** : Input으로 들어가는 Channel의 갯수
+    - **Channel_out** : Output으로 나오는 Channel의 갯수
+
+### He Initialization
+
+- ReLU 함수에 특화되어 있는 weight initialization 기법
+- 평균은 0, 분산은 Xavier의 2배(4/(Channel_in + Channel_out))인 경우다.
+
