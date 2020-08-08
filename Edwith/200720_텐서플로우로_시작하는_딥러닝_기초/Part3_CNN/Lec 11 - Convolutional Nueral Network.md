@@ -96,4 +96,54 @@
   | ---- | ---- |
   | 3    | 4    |
 
-  
+
+---
+
+# Lec 11-3 - ConvNet의 활용예
+
+> 더 많은 합성곱 신경망(Convolutional Neural Network) 구조에 대해 알아본다.
+
+## Case Study
+
+### LeNet-5
+
+- 32 * 32 * 1 images
+- 6 of 5 * 5 * 1 filters
+- 2 * 2 filters at stride 2 for pooling
+
+### AlexNet
+
+> 매우 유명
+
+- 227 * 227 * 3 images
+- **First Layer** 96 11 * 11 filters at stride 4
+  - Output = 55 * 55 * 96
+  - Parameters : (11 * 11 * 3) * 96 = 35K
+- **Second Layer** 3 * 3 filters at stride 2 for pooling
+  - Output = 27 * 27 * 96
+- 위의 Layer 포함하여 총 Conv 5개, Max Pool 3개, Normalization 2개, FC 3개 이용
+- ReLU 최초 사용
+- dropout 0.5
+- batch size 128
+- CNN 7개 만듦
+
+### GoogLeNet
+
+- Inception Module
+
+### ResNet
+
+- ILSVRC 2014 winner
+- error : 3.5% (사람의 error 5%)
+
+### CNN for Sentence Classification
+
+- Yoon Kim, 2014
+
+### DeepMind's AlphaGo
+
+- 19 * 19 * 48 images
+- zero padding
+- k filters of nernel size 5 * 5 with stride 1 
+- etc..
+
