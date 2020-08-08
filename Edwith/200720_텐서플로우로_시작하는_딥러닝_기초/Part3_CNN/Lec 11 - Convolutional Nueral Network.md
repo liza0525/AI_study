@@ -71,3 +71,29 @@
   ![11-1_convolution_layers_using_filters](../MDImage/11-1_convolution_layers_using_filters.PNG)
 
   - filter의 weight 갯수 : 6 * 5 * 5 * 3개 -> 10 * 5 * 5 * 3개
+
+---
+
+# Lec 11-2 - ConvNet Max pooling 과 Full Network
+
+> 합성곱 신경망(Convolutional Neural Network)의 풀링 층(Pooling Layer)에 대해 알아본다.
+
+## Pooling Layer(=sampling)
+
+- Conv Layer에서 한 Layer씩 뽑아 resizing하여 다시 쌓는 것을 의미
+
+  ![11-2_Pooling](../MDImage/11-2_Pooling.PNG)
+
+### Max Pooling
+
+![11-2_Max_Pooling](../MDImage/11-2_Max_Pooling.PNG)
+
+- 위의 Layer를 2 * 2 filter와 stride = 2로 max pool한다면?
+
+  - 각 filter 안에서 **가장 큰 숫자**를 골라 Layer resizing을 한다.
+
+  | 6    | 8    |
+  | ---- | ---- |
+  | 3    | 4    |
+
+  
